@@ -3,21 +3,24 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-    static Connection con;
-
     public static Connection getConnection() {
+
+        Connection con = null;
 
         try {
 
-            con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/foodorder",
-                "root",
-                "Chandanareddy123@"
-            );
+            String url = "jdbc:mysql://localhost:3306/fooddb";
+            String user = "root";
+            String password = "Chandanareddy123@";
 
-        } catch(Exception e) {
+            con = DriverManager.getConnection(url, user, password);
+
+            System.out.println("Database Connected Successfully");
+
+        } catch (Exception e) {
 
             System.out.println(e);
+
         }
 
         return con;
